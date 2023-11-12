@@ -1,0 +1,208 @@
+{% extends 'base.html' %}
+
+{% block title %}Registration | AI{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-sm-8 offset-sm-2">
+            <div class="">
+                <form action="/predict" method="POST" >
+                    <fieldset >
+                        <h2 class="text-center">Porn Addiction Prediction</h2>
+                        <hr>
+                        <!-- Excessive -->
+                        <div class="mb-3">
+                            <label for="excessive" class="form-label">Excessive:</label>
+                            <select name="excessive" class="form-select" required>
+                                <option disabled selected value="" >Select</option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="quit_unsuccessful" class="form-label">Quit Unsuccessful:</label>
+                            <select name="quit_unsuccessful" class="form-select" required>
+                                <option disabled selected value="" >Select</option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+                        <!-- Quit Unsuccessful -->
+                        <div class="mb-3">
+                            <label for="loss_focus" class="form-label">Loss Focus:</label>
+                            <select name="loss_focus" class="form-select" required>
+                                <option disabled selected value="" >Select</option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+
+                        <!-- Repeat the pattern for other input parameters -->
+
+                        <!-- Reduction -->
+                        <div class="mb-3">
+                            <label for="reduction" class="form-label">Reduction:</label>
+                            <select name="reduction" class="form-select"required>
+                                <option disabled selected value="" >Select</option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+
+                        <!-- Engaging Risky -->
+                        <div class="mb-3">
+                            <label for="engaging_risky" class="form-label">Engaging Risky:</label>
+                            <select name="engaging_risky" class="form-select" required>
+                                <option disabled selected value="" >Select</option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+
+                        <!-- Guilt Shame -->
+                        <div class="mb-3">
+                            <label for="guilt_shame" class="form-label">Guilt Shame:</label>
+                            <select name="guilt_shame" class="form-select" required>
+                                <option disabled selected value="" >Select</option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+
+                        <!-- Cycles -->
+                        <div class="mb-3">
+                            <label for="cycles" class="form-label">Cycles:</label>
+                            <select name="cycles" class="form-select" required>
+                                <option disabled selected value="" >Select</option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+
+                        <!-- Health Issue -->
+                        <div class="mb-3">
+                            <label for="health_issue" class="form-label">Health Issue:</label>
+                            <select name="health_issue" class="form-select" required>
+                                <option disabled selected value="" >Select</option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+
+                        <!-- Demanding -->
+                        <div class="mb-3">
+                            <label for="demanding" class="form-label">Demanding:</label>
+                            <select name="demanding" class="form-select" required>
+                                <option disabled selected value="" >Select</option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+
+                        <!-- Lost Attraction -->
+                        <div class="mb-3">
+                            <label for="lost_attraction" class="form-label">Lost Attraction:</label>
+                            <select name="lost_attraction" class="form-select" required>
+                                <option disabled selected value="" >Select</option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+
+                        <!-- Physical Pain -->
+                        <div class="mb-3">
+                            <label for="physical_pain" class="form-label">Physical Pain:</label>
+                            <select name="physical_pain" class="form-select" required>
+                                <option disabled selected value="" >Select</option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+
+                        <!-- Feeling Distracted -->
+                        <div class="mb-3">
+                            <label for="feeling_distracted" class="form-label">Feeling Distracted:</label>
+                            <select name="feeling_distracted" class="form-select"required>
+                                <option disabled selected value="" >Select</option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+
+                        <!-- A U Issue R -->
+                        <div class="mb-3">
+                            <label for="a_u_issue_r" class="form-label">A U Issue R:</label>
+                            <select name="a_u_issue_r" class="form-select"required>
+                                <option disabled selected value="" >Select</option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+
+                        <!-- Cope Feelings -->
+                        <div class="mb-3">
+                            <label for="cope_feelings" class="form-label">Cope Feelings:</label>
+                            <select name="cope_feelings" class="form-select"required>
+                                <option disabled selected value="" >Select</option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+
+                        <!-- Sex Life Less Satisfying -->
+                        <div class="mb-3">
+                            <label for="sex_life_less_satisfying" class="form-label">Sex Life Less Satisfying:</label>
+                            <select name="sex_life_less_satisfying" class="form-select"required>
+                                <option disabled selected value="" >Select</option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+
+                        <!-- Lost Interest -->
+                        <div class="mb-3">
+                            <label for="lost_interest" class="form-label">Lost Interest:</label>
+                            <select name="lost_interest" class="form-select"required>
+                                <option disabled selected value="" >Select</option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+
+                        <!-- Obsessive Thoughts -->
+                        <div class="mb-3">
+                            <label for="obsessive_thoughts" class="form-label">Obsessive Thoughts:</label>
+                            <select name="obsessive_thoughts" class="form-select"required>
+                                <option disabled selected value="" >Select</option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+
+                        <!-- Feeling Withdrawal -->
+                        <div class="mb-3">
+                            <label for="feeling_withdrawal" class="form-label">Feeling Withdrawal:</label>
+                            <select name="feeling_withdrawal" class="form-select"required>
+                                <option disabled selected value="" >Select</option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+
+                        <!-- Result -->
+                        <div class="mb-3">
+                            Result: {{ result }}<br>
+                        </div>
+
+                        <div class="mb-3">
+                            <input type="submit" value="Predict" class="btn btn-primary">
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
