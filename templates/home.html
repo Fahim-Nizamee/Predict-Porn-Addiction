@@ -7,13 +7,13 @@
     <div class="row">
         <div class="col-sm-8 offset-sm-2">
             <div class="">
-                <form action="/predict" method="POST" >
-                    <fieldset >
-                        <h2 class="text-center">Porn Addiction Prediction</h2>
+                <form id="predict-form" method="POST">
+                    <fieldset>
+                        <h2 class="text-center">Predict Porn Addiction</h2>
                         <hr>
                         <!-- Excessive -->
                         <div class="mb-3">
-                            <label for="excessive" class="form-label">Excessive:</label>
+                            <label for="excessive" class="form-label"><strong>1. Is your consumption of pornography becoming excessive? </strong></label>
                             <select name="excessive" class="form-select" required>
                                 <option disabled selected value="" >Select</option>
                                 <option value="1">Yes</option>
@@ -22,7 +22,8 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="quit_unsuccessful" class="form-label">Quit Unsuccessful:</label>
+                            <label for="quit_unsuccessful" class="form-label"><strong>2. Have you experienced the inability to stop, or have your efforts to quit been unsuccessful?
+                            </strong></label>
                             <select name="quit_unsuccessful" class="form-select" required>
                                 <option disabled selected value="" >Select</option>
                                 <option value="1">Yes</option>
@@ -31,7 +32,9 @@
                         </div>
                         <!-- Quit Unsuccessful -->
                         <div class="mb-3">
-                            <label for="loss_focus" class="form-label">Loss Focus:</label>
+                            <label for="loss_focus" class="form-label"><strong>
+                                3. Are you experiencing a loss of focus at work?
+                            </strong></label>
                             <select name="loss_focus" class="form-select" required>
                                 <option disabled selected value="" >Select</option>
                                 <option value="1">Yes</option>
@@ -43,7 +46,9 @@
 
                         <!-- Reduction -->
                         <div class="mb-3">
-                            <label for="reduction" class="form-label">Reduction:</label>
+                            <label for="reduction" class="form-label"><strong>
+                                4. Have you noticed a reduction in sexual satisfaction?
+                            </strong></label>
                             <select name="reduction" class="form-select"required>
                                 <option disabled selected value="" >Select</option>
                                 <option value="1">Yes</option>
@@ -53,7 +58,8 @@
 
                         <!-- Engaging Risky -->
                         <div class="mb-3">
-                            <label for="engaging_risky" class="form-label">Engaging Risky:</label>
+                            <label for="engaging_risky" class="form-label"><strong>5. Are you engaging in risky behaviors?</strong>
+                            </label>
                             <select name="engaging_risky" class="form-select" required>
                                 <option disabled selected value="" >Select</option>
                                 <option value="1">Yes</option>
@@ -63,7 +69,8 @@
 
                         <!-- Guilt Shame -->
                         <div class="mb-3">
-                            <label for="guilt_shame" class="form-label">Guilt Shame:</label>
+                            <label for="guilt_shame" class="form-label"><strong>6. Are you experiencing feelings of guilt and shame?
+                            </strong></label>
                             <select name="guilt_shame" class="form-select" required>
                                 <option disabled selected value="" >Select</option>
                                 <option value="1">Yes</option>
@@ -73,7 +80,8 @@
 
                         <!-- Cycles -->
                         <div class="mb-3">
-                            <label for="cycles" class="form-label">Cycles:</label>
+                            <label for="cycles" class="form-label"><strong>7. Are you going through repeated cycles of stopping and restarting?
+                            </strong></label>
                             <select name="cycles" class="form-select" required>
                                 <option disabled selected value="" >Select</option>
                                 <option value="1">Yes</option>
@@ -83,7 +91,8 @@
 
                         <!-- Health Issue -->
                         <div class="mb-3">
-                            <label for="health_issue" class="form-label">Health Issue:</label>
+                            <label for="health_issue" class="form-label"><strong>8. Are you struggling with mental health issues, such as anxiety, depression, or suicidal thoughts?
+                            </strong></label>
                             <select name="health_issue" class="form-select" required>
                                 <option disabled selected value="" >Select</option>
                                 <option value="1">Yes</option>
@@ -93,7 +102,8 @@
 
                         <!-- Demanding -->
                         <div class="mb-3">
-                            <label for="demanding" class="form-label">Demanding:</label>
+                            <label for="demanding" class="form-label"><strong>9. Are you becoming more demanding?
+                            </strong></label>
                             <select name="demanding" class="form-select" required>
                                 <option disabled selected value="" >Select</option>
                                 <option value="1">Yes</option>
@@ -103,7 +113,8 @@
 
                         <!-- Lost Attraction -->
                         <div class="mb-3">
-                            <label for="lost_attraction" class="form-label">Lost Attraction:</label>
+                            <label for="lost_attraction" class="form-label"><strong>10. Have you lost attraction?
+                            </strong></label>
                             <select name="lost_attraction" class="form-select" required>
                                 <option disabled selected value="" >Select</option>
                                 <option value="1">Yes</option>
@@ -113,7 +124,8 @@
 
                         <!-- Physical Pain -->
                         <div class="mb-3">
-                            <label for="physical_pain" class="form-label">Physical Pain:</label>
+                            <label for="physical_pain" class="form-label"><strong>11. Are you experiencing physical pain?
+                            </strong></label>
                             <select name="physical_pain" class="form-select" required>
                                 <option disabled selected value="" >Select</option>
                                 <option value="1">Yes</option>
@@ -123,7 +135,8 @@
 
                         <!-- Feeling Distracted -->
                         <div class="mb-3">
-                            <label for="feeling_distracted" class="form-label">Feeling Distracted:</label>
+                            <label for="feeling_distracted" class="form-label"><strong>12. Are you feeling distracted?
+                            </strong></label>
                             <select name="feeling_distracted" class="form-select"required>
                                 <option disabled selected value="" >Select</option>
                                 <option value="1">Yes</option>
@@ -133,7 +146,8 @@
 
                         <!-- A U Issue R -->
                         <div class="mb-3">
-                            <label for="a_u_issue_r" class="form-label">A U Issue R:</label>
+                            <label for="a_u_issue_r" class="form-label"><strong>13. Are you becoming angry or upset when the issue is raised?
+                            </strong></label>
                             <select name="a_u_issue_r" class="form-select"required>
                                 <option disabled selected value="" >Select</option>
                                 <option value="1">Yes</option>
@@ -143,7 +157,8 @@
 
                         <!-- Cope Feelings -->
                         <div class="mb-3">
-                            <label for="cope_feelings" class="form-label">Cope Feelings:</label>
+                            <label for="cope_feelings" class="form-label"><strong>14. Are you using pornography as a way to cope with feelings of sadness, anxiety, insomnia, or other mental health issues?
+                            </strong></label>
                             <select name="cope_feelings" class="form-select"required>
                                 <option disabled selected value="" >Select</option>
                                 <option value="1">Yes</option>
@@ -153,7 +168,8 @@
 
                         <!-- Sex Life Less Satisfying -->
                         <div class="mb-3">
-                            <label for="sex_life_less_satisfying" class="form-label">Sex Life Less Satisfying:</label>
+                            <label for="sex_life_less_satisfying" class="form-label"><strong>15. Is your sex life becoming less satisfying?
+                            </strong></label>
                             <select name="sex_life_less_satisfying" class="form-select"required>
                                 <option disabled selected value="" >Select</option>
                                 <option value="1">Yes</option>
@@ -163,7 +179,8 @@
 
                         <!-- Lost Interest -->
                         <div class="mb-3">
-                            <label for="lost_interest" class="form-label">Lost Interest:</label>
+                            <label for="lost_interest" class="form-label"><strong>16. Have you lost interest in things you once enjoyed?
+                            </strong></label>
                             <select name="lost_interest" class="form-select"required>
                                 <option disabled selected value="" >Select</option>
                                 <option value="1">Yes</option>
@@ -173,7 +190,8 @@
 
                         <!-- Obsessive Thoughts -->
                         <div class="mb-3">
-                            <label for="obsessive_thoughts" class="form-label">Obsessive Thoughts:</label>
+                            <label for="obsessive_thoughts" class="form-label"><strong>17. Are you experiencing cravings and obsessive thoughts?
+                            </strong></label>
                             <select name="obsessive_thoughts" class="form-select"required>
                                 <option disabled selected value="" >Select</option>
                                 <option value="1">Yes</option>
@@ -183,7 +201,9 @@
 
                         <!-- Feeling Withdrawal -->
                         <div class="mb-3">
-                            <label for="feeling_withdrawal" class="form-label">Feeling Withdrawal:</label>
+                            <label for="feeling_withdrawal" class="form-label"><strong>18. Feeling withdrawal when not watching porn?
+
+                            </strong></label>
                             <select name="feeling_withdrawal" class="form-select"required>
                                 <option disabled selected value="" >Select</option>
                                 <option value="1">Yes</option>
@@ -192,12 +212,12 @@
                         </div>
 
                         <!-- Result -->
-                        <div class="mb-3">
-                            Result: {{ result }}<br>
+                        <div class="m-3">
+                            <h4 class="" id="prediction-result">{{ result }}</h4><br>
                         </div>
 
-                        <div class="mb-3">
-                            <input type="submit" value="Predict" class="btn btn-primary">
+                        <div class="mb-3 w-100 text-center">
+                            <input type="submit" value="Predict" class="btn btn-outline-dark w-50">
                         </div>
                     </fieldset>
                 </form>
@@ -205,4 +225,44 @@
         </div>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#predict-form").submit(function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                type: "POST",
+                url: "/predict",
+                data: $(this).serialize(),
+                success: function (response) {
+                    if (response.error_message) {
+                        alert('Prediction failed: ' + response.error_message);
+                    } else {
+                        // Update the page with the prediction result
+                        
+                        // alert('Prediction Successfull: ' + response.result);
+                        if(response.result == "addicted")
+                        {
+                            $("#prediction-result").removeClass('bg-success text-white text-center p-3 form-control shadow')
+                            $("#prediction-result").addClass('bg-danger text-white text-center p-3 form-control shadow')
+                            $("#prediction-result").text("According to your given data I predict you are ADDICTED to Pornography.");
+                            
+                        }
+                        else{
+                            $("#prediction-result").removeClass('bg-danger text-white text-center p-3 form-control shadow')
+                            $("#prediction-result").addClass('bg-success text-white text-center p-3 form-control shadow')
+                            $("#prediction-result").text("According to your given data I predict you are NOT ADDICTED to Pornography.");
+                        }
+
+
+                    }
+                },
+                error: function () {
+                    alert('Error occurred during prediction.');
+                }
+            });
+        });
+    });
+</script>
 {% endblock %}

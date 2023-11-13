@@ -1,6 +1,7 @@
-from flask import Flask, render_template, url_for, redirect, request
+from flask import Flask, render_template, url_for, redirect, request,jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
+
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, SelectField
 from wtforms.validators import InputRequired, Length, ValidationError
@@ -59,49 +60,48 @@ class LoginForm(FlaskForm):
 @app.route('/home')
 @login_required
 def home():
-    form = PredictForm()
+    # form = PredictForm()
+    return render_template('home.html')
 
-    return render_template('home.html', form=form)
 
-
-class PredictForm(FlaskForm):
-    excessive = SelectField('Excessive', choices=[(
-        '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
-    quit_unsuccessful = SelectField('Quit Unsuccessful', choices=[(
-        '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
-    loss_focus = SelectField('Loss Focus', choices=[(
-        '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
-    reduction = SelectField('Reduction', choices=[(
-        '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
-    engaging_risky = SelectField('Engaging Risky', choices=[(
-        '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
-    guilt_shame = SelectField('Guilt Shame', choices=[(
-        '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
-    cycles = SelectField('Cycles', choices=[
-                         ('1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
-    health_issue = SelectField('Health Issue', choices=[(
-        '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
-    demanding = SelectField('Demanding', choices=[(
-        '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
-    lost_attraction = SelectField('Lost Attraction', choices=[(
-        '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
-    physical_pain = SelectField('Physical Pain', choices=[(
-        '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
-    feeling_distracted = SelectField('Feeling Distracted', choices=[(
-        '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
-    a_u_issue_r = SelectField('A U Issue R', choices=[(
-        '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
-    cope_feelings = SelectField('Cope Feelings', choices=[(
-        '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
-    sex_life_less_satisfying = SelectField('Sex Life Less Satisfying', choices=[(
-        '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
-    lost_interest = SelectField('Lost Interest', choices=[(
-        '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
-    obsessive_thoughts = SelectField('Obsessive Thoughts', choices=[(
-        '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
-    Feeling_withdrawal = SelectField('Feeling Withdrawal', choices=[(
-        '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
-    submit = SubmitField('Predict')
+# class PredictForm(FlaskForm):
+#     excessive = SelectField('Excessive', choices=[(
+#         '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
+#     quit_unsuccessful = SelectField('Quit Unsuccessful', choices=[(
+#         '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
+#     loss_focus = SelectField('Loss Focus', choices=[(
+#         '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
+#     reduction = SelectField('Reduction', choices=[(
+#         '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
+#     engaging_risky = SelectField('Engaging Risky', choices=[(
+#         '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
+#     guilt_shame = SelectField('Guilt Shame', choices=[(
+#         '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
+#     cycles = SelectField('Cycles', choices=[
+#                          ('1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
+#     health_issue = SelectField('Health Issue', choices=[(
+#         '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
+#     demanding = SelectField('Demanding', choices=[(
+#         '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
+#     lost_attraction = SelectField('Lost Attraction', choices=[(
+#         '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
+#     physical_pain = SelectField('Physical Pain', choices=[(
+#         '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
+#     feeling_distracted = SelectField('Feeling Distracted', choices=[(
+#         '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
+#     a_u_issue_r = SelectField('A U Issue R', choices=[(
+#         '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
+#     cope_feelings = SelectField('Cope Feelings', choices=[(
+#         '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
+#     sex_life_less_satisfying = SelectField('Sex Life Less Satisfying', choices=[(
+#         '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
+#     lost_interest = SelectField('Lost Interest', choices=[(
+#         '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
+#     obsessive_thoughts = SelectField('Obsessive Thoughts', choices=[(
+#         '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
+#     Feeling_withdrawal = SelectField('Feeling Withdrawal', choices=[(
+#         '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
+#     submit = SubmitField('Predict')
 
 
 @app.route('/predict', methods=['POST', 'GET'])
@@ -135,12 +135,16 @@ def predict():
                                      physical_pain, feeling_distracted, a_u_issue_r, cope_feelings, sex_life_less_satisfying, lost_interest, obsessive_thoughts, feeling_withdrawal]])[0]
         except (ValueError, TypeError) as e:
             error_message = f"Error: {str(e)}"
+            if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+                return jsonify({'result': None, 'error_message': error_message})
             return render_template('home.html', result=result, error_message=error_message)
 
+    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+        return jsonify({'result': result, 'error_message': None})
     return render_template('home.html', result=result)
 
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
     if form.validate_on_submit():
@@ -148,7 +152,7 @@ def login():
         if user:
             if bcrypt.check_password_hash(user.password, form.password.data):
                 login_user(user)
-                return redirect(url_for('home'))
+                return redirect(url_for('landing'))
     return render_template('login.html', form=form)
 
 
@@ -178,6 +182,14 @@ def register():
 
     return render_template('reg.html', form=form)
 
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+@app.route('/')
+def landing():
+    return render_template('landing.html')
 
 if __name__ == "__main__":
     with app.app_context():

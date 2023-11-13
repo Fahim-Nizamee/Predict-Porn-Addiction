@@ -45,3 +45,11 @@ code {
 .nav-img{
     height: 3em;
 } */
+
+body{
+    background-image: url('../img/l3.jpg');
+    background-size: cover;
+    background-attachment: fixed ;
+    backdrop-filter: blur(10px);
+   
+}
