@@ -27,6 +27,10 @@ class User(db.Model, UserMixin):
 def load_user(user_id):
     return User.query.get(int(user_id))
 
+@login_manager.unauthorized_handler
+def unauthorized_callback():
+    return redirect('/login')
+
 
 class RegisterForm(FlaskForm):
     username = StringField(validators=[
@@ -57,56 +61,19 @@ class LoginForm(FlaskForm):
                          'class': 'btn btn-outline-dark'})
 
 
-@app.route('/home')
-@login_required
-def home():
-    # form = PredictForm()
-    return render_template('home.html')
+# @app.route('/predict')
+# @login_required
+# def predict():
+#     # form = PredictForm()
+#     return render_template('home.html')
 
 
-# class PredictForm(FlaskForm):
-#     excessive = SelectField('Excessive', choices=[(
-#         '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
-#     quit_unsuccessful = SelectField('Quit Unsuccessful', choices=[(
-#         '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
-#     loss_focus = SelectField('Loss Focus', choices=[(
-#         '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
-#     reduction = SelectField('Reduction', choices=[(
-#         '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
-#     engaging_risky = SelectField('Engaging Risky', choices=[(
-#         '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
-#     guilt_shame = SelectField('Guilt Shame', choices=[(
-#         '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
-#     cycles = SelectField('Cycles', choices=[
-#                          ('1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
-#     health_issue = SelectField('Health Issue', choices=[(
-#         '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
-#     demanding = SelectField('Demanding', choices=[(
-#         '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
-#     lost_attraction = SelectField('Lost Attraction', choices=[(
-#         '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
-#     physical_pain = SelectField('Physical Pain', choices=[(
-#         '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
-#     feeling_distracted = SelectField('Feeling Distracted', choices=[(
-#         '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
-#     a_u_issue_r = SelectField('A U Issue R', choices=[(
-#         '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
-#     cope_feelings = SelectField('Cope Feelings', choices=[(
-#         '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
-#     sex_life_less_satisfying = SelectField('Sex Life Less Satisfying', choices=[(
-#         '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
-#     lost_interest = SelectField('Lost Interest', choices=[(
-#         '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
-#     obsessive_thoughts = SelectField('Obsessive Thoughts', choices=[(
-#         '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
-#     Feeling_withdrawal = SelectField('Feeling Withdrawal', choices=[(
-#         '1', 'Yes'), ('0', 'No')], validators=[InputRequired()])
-#     submit = SubmitField('Predict')
 
 
 @app.route('/predict', methods=['POST', 'GET'])
+@login_required
 def predict():
-    result = 0
+    result = ""
     
     if request.method == 'POST':
         # Get form values from the request
