@@ -7,7 +7,7 @@
     -moz-osx-font-smoothing: grayscale;
     line-height: normal;
     box-sizing: border-box;
-    
+
 
 }
 
@@ -35,10 +35,7 @@ code {
     --br-xl: 20px;
 }
 
-/* nav{
-    height: 4.5em;
-    font-size: large;
-}
+/*
 .btn{
     background-color: var(--primary-color);
 }
@@ -46,13 +43,13 @@ code {
     height: 3em;
 } */
 
-.bg{
+.bg {
     background: url('../img/bg.png') center;
     background-size: cover;
     height: 500px;
     /* background-attachment: fixed ; */
     /* backdrop-filter: blur(10px); */
-   
+
 }
 
 .boxed1 {
@@ -88,11 +85,60 @@ code {
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .5);
 }
 
-.log{
+.log {
     height: 23px;
 }
+
 /* label , strong{
 font-family: monospace;
 font-size: 20px;
 font-weight: 400;
 } */
+
+.night{
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.tog[type=checkbox] {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+
+.togl {
+    cursor: pointer;
+    /* text-indent: -9999px; */
+    width: 35px;
+    height: 20px;
+    background: rgb(70, 69, 69);
+    /* float: right; */
+    border-radius: 100px;
+    position: relative;
+}
+
+.togl:after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    background: #a7a7a7;
+    border-radius: 90px;
+    transition: 0.3s;
+}
+
+.tog:checked+.togl {
+    background: rgb(70, 69, 69)
+}
+
+.tog:checked+.togl:after {
+    left: calc(100% - 2px);
+    transform: translateX(-100%);
+}
+
+.togl:active:after {
+    width: 45px;
+}

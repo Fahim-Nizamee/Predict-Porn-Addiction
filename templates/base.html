@@ -11,11 +11,50 @@
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
 </head>
 
-<body class="">
-    <!-- <header>
-        <h1>My Website</h1>
-    </header> -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary position-sticky top-0">
+<body class="" id="themeBody">
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var checkbox = document.querySelector('input[name=theme]');
+            var body = document.getElementById('themeBody');
+            var nav = document.querySelector('.navbar');
+
+            function setTheme(theme) {
+                if (theme === 'dark') {
+                    body.classList.add('bg-dark');
+                    body.classList.add('text-white')
+                    nav.classList.add('bg-body-secondary');
+                    nav.classList.remove('bg-body-tertiary');
+                } else {
+                    body.classList.remove('bg-dark');
+                    body.classList.remove('text-white')
+                    nav.classList.remove('bg-body-secondary');
+                    nav.classList.add('bg-body-tertiary');
+                }
+            }
+
+            function handleThemeChange() {
+                var theme = checkbox.checked ? 'dark' : 'light';
+                setTheme(theme);
+                localStorage.setItem('theme', theme);
+            }
+
+            function trans() {
+            }
+
+            checkbox.addEventListener('change', function () {
+                trans();
+                handleThemeChange();
+            });
+
+            var savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                checkbox.checked = savedTheme === 'dark';
+                setTheme(savedTheme);
+            }
+        });
+    </script>
+    <nav class="navbar navbar-expand-lg position-sticky top-0 ">
         <div class=" container d-flex align-items-lg-end ">
             <a class="navbar-brand  " href="{{url_for('landing')}}"><img class="nav-img"
                     src="{{ url_for('static', filename='img/ai.png') }}" alt=""> Predict Addiction</a>
@@ -58,12 +97,14 @@
                             <li><a class="dropdown-item " href="{{ url_for('register') }}">Sign up</a></li>
                         </ul>
                         <p></p>
-                        <!-- <a class="nav-link dropdown-toggle  " href="{{ url_for('login') }}"  >Login
-                          </a>
-                          
-                            <a class="nav-link" href=""></a> -->
                     </li>
                     {% endif %}
+                    <li class="nav-item">
+                        <div class="night">
+                            <input class="tog" type="checkbox" id="switch" name="theme" /><label class="togl"
+                                for="switch"></label>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -71,7 +112,7 @@
     <section>
         {% block content %}{% endblock %}
     </section>
-    <footer class="card-footer text-center bg-dark text-white">
+    <footer class="card-footer text-center bg-black text-white">
         <span class=" text-white-50">Copyright ©2023 AI prediction. All Right Reserved</span> <br>
         <span>Developed by Fahim Nizamee and Muhammad Imtiaz Hossain</span>
     </footer>
